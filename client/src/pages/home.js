@@ -10,7 +10,8 @@ class Home extends Component {
 
     loadResults = () => {
         API.scrapeNews()
-            .then(response => {
+            .then(async response => {
+                await this.setState({scraped: []});
                 let $ = cheerio.load(response.data);
                 $("article").each(async (i, element) => {
                     var title = $(element).find("h2").text();

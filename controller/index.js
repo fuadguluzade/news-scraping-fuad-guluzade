@@ -43,24 +43,25 @@ module.exports = {
             .catch(e => res.status(422).json(e))
     },
 
-    deleteComment: async function (req, res) {
-        try {
-            db.Comments
-                .findById({ _id: req.params.id })
-                .then(dbModel => dbModel.remove())
-                .then(dbModel => res.json(dbModel))
-                .catch(err => res.status(422).json(err));
-        } catch (e) {
-            res.status(422).json(e);
-        }
+    deleteComment: function (req, res) {
+        db.Comments
+            .findById({ _id: req.params.id })
+            .then(dbModel => dbModel.remove())
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err));
+
+    },
+
+    isDuplicate: function (req, res) {
+        console.log(req.params.news)
     },
 
     deleteAll: async function (req, res) {
-        await db.News.deleteMany({}, function(err, response) {
-            if (err) throw(err);
+        await db.News.deleteMany({}, function (err, response) {
+            if (err) throw (err);
         })
-        await db.Comments.deleteMany({}, function(err, response) {
-            if (err) throw(err);
+        await db.Comments.deleteMany({}, function (err, response) {
+            if (err) throw (err);
             res.json(response);
         })
     }
