@@ -1,0 +1,11 @@
+.comment {
+    background-size: cover;
+    background-position: center;
+    background-clip: content-box;
+    border: 1px solid lightgrey;
+    height: 40px;
+    width: 465px;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 10px;
+  }
