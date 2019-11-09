@@ -25,8 +25,8 @@ export default {
         return axios.post(`/comments/${id}`, {comment: comment});
     },
 
-    deleteComment: function() {
-        return axios.delete('/comments');
+    deleteComment: function(id) {
+        return axios.delete(`/comments/${id}`);
     },
 
     deleteAll: function() {

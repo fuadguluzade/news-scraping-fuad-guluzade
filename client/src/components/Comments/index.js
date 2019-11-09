@@ -10,14 +10,18 @@ class Comments extends Component {
     }
 
     componentDidMount() {
+        this.getComments();
+    }
+
+    getComments = () => {
         API.getCommentsForNews(this.props.newsId)
             .then(comments => this.setState({ newsComments: comments.data.comment }))
             .catch(e => console.log(e));
     }
 
-    handleCommentDelete = () => {
-        API.deleteComment()
-            .then(res => console.log(res))
+    handleCommentDelete = (commentId) => {
+        API.deleteComment(commentId)
+            .then(res => this.getComments())
             .catch(e => console.log(e));
     }
 
@@ -28,7 +32,7 @@ class Comments extends Component {
                     return (
                         <div key={comment._id} className="comment">
                             <p>{comment.body}</p>
-                            <DeleteBtn onClick={this.handleCommentDelete} />
+                            <DeleteBtn onClick={() => this.handleCommentDelete(comment._id)} />
                         </div>
                     )
                 })

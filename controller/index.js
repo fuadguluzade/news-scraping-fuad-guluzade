@@ -45,7 +45,11 @@ module.exports = {
 
     deleteComment: async function (req, res) {
         try {
-            console.log('req.params.id ' + JSON.stringify(req.params))
+            db.Comments
+                .findById({ _id: req.params.id })
+                .then(dbModel => dbModel.remove())
+                .then(dbModel => res.json(dbModel))
+                .catch(err => res.status(422).json(err));
         } catch (e) {
             res.status(422).json(e);
         }
@@ -54,7 +58,6 @@ module.exports = {
     deleteAll: async function (req, res) {
         await db.News.deleteMany({}, function(err, response) {
             if (err) throw(err);
-            res.json(response);
         })
         await db.Comments.deleteMany({}, function(err, response) {
             if (err) throw(err);
