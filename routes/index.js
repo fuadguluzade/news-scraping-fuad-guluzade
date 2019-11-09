@@ -8,11 +8,15 @@ router.route('/saved')
 
 router.route('/saved/:id')
     .delete(controller.deleteNews);
+    
 
 router.route('/comments/:id')
     .get(controller.getComments)
     .post(controller.postComment)
-// .delete(controller.deleteComment)
+    .delete(controller.deleteComment)
+
+router.route('/delete_all')
+    .delete(controller.deleteAll);
 
 
 module.exports = router;

@@ -23,5 +23,13 @@ export default {
 
     postCommentForNews: function(id, comment) {
         return axios.post(`/comments/${id}`, {comment: comment});
+    },
+
+    deleteComment: function() {
+        return axios.delete('/comments');
+    },
+
+    deleteAll: function() {
+        return axios.delete('/delete_all');
     }
 }

@@ -16,15 +16,17 @@ class Comments extends Component {
     }
 
     handleCommentDelete = () => {
-        console.log('deleted');
+        API.deleteComment()
+            .then(res => console.log(res))
+            .catch(e => console.log(e));
     }
 
     render() {
         if (this.state.newsComments.length > 0) {
             return (
-                this.state.newsComments.map((comment, i) => {
+                this.state.newsComments.map((comment) => {
                     return (
-                        <div key={i} className="comment">
+                        <div key={comment._id} className="comment">
                             <p>{comment.body}</p>
                             <DeleteBtn onClick={this.handleCommentDelete} />
                         </div>
