@@ -28,6 +28,6 @@
     "mongoose": "^5.9.7",
     "react-bootstrap": "^1.0.0",
     "react-router-dom": "^5.1.2",
-    "resolve-url-loader": "^3.1.1"
+    "resolve-url-loader": "^5.0.0"
   }
 }
